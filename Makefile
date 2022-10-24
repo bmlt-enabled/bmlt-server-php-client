@@ -10,9 +10,15 @@ generate: openapi.json
 	    -p apiPackage=bmlt-root-server-client \
 	    -p artifactVersion=1.0.0 \
 	    -p packageName=BmltClient \
-	    --git-repo-id=bmlt-root-server-typescript-client \
+	    --git-repo-id=bmlt-root-server-php-client \
 	    --git-user-id=bmlt-enabled \
 	    -o .
+
+template:
+	mkdir templates
+	docker run --rm -v "$(shell pwd):/local" -w /local openapitools/openapi-generator-cli author template \
+	    -g php \
+	    -o ./templates
 
 clean:
 	rm -f openapi.json

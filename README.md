@@ -19,11 +19,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/bmlt-enabled/bmlt-root-server-typescript-client.git"
+      "url": "https://github.com/bmlt-enabled/bmlt-root-server-php-client.git"
     }
   ],
   "require": {
-    "bmlt-enabled/bmlt-root-server-typescript-client": "*@dev"
+    "bmlt-enabled/bmlt-root-server-php-client": "*@dev"
   }
 }
 ```
