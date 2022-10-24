@@ -1,7 +1,11 @@
 {
-    "name": "bmlt-enabled/bmlt-root-server-php-client",
-    "version": "1.0.1",
-    "description": "BMLT Admin API Documentation",
+    {{#composerPackageName}}
+    "name": "{{.}}",
+    {{/composerPackageName}}
+    {{#artifactVersion}}
+    "version": "{{.}}",
+    {{/artifactVersion}}
+    "description": "{{{appDescription}}}",
     "keywords": [
         "openapitools",
         "openapi-generator",
@@ -32,9 +36,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "OpenAPI\\Client\\" : "lib/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\" : "{{srcBasePath}}/" }
     },
     "autoload-dev": {
-        "psr-4": { "OpenAPI\\Client\\Test\\" : "test/" }
+        "psr-4": { "{{escapedInvokerPackage}}\\Test\\" : "{{testBasePath}}/" }
     }
 }

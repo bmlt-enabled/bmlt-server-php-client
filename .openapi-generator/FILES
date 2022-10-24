@@ -35,6 +35,7 @@ docs/Model/UserUpdate.md
 docs/Model/ValidationError.md
 git_push.sh
 lib/ApiException.php
+lib/BmltClient/RootServerApi.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AuthenticationError.php
@@ -68,5 +69,4 @@ lib/Model/UserPartialUpdate.php
 lib/Model/UserUpdate.php
 lib/Model/ValidationError.php
 lib/ObjectSerializer.php
-lib/bmlt-root-server-client/RootServerApi.php
 phpunit.xml.dist
