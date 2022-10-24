@@ -8,7 +8,8 @@ generate: openapi.json
 	    -i openapi.json \
 	    -g php \
 	    -p apiPackage=BmltClient \
-	    -p artifactVersion=1.0.1 \
+	    -p artifactVersion=1.0.2 \
+	    -p srcBasePath=. \
 	    -p packageName=BmltClient \
 	    --git-repo-id=bmlt-root-server-php-client \
 	    --git-user-id=bmlt-enabled \
