@@ -7,10 +7,7 @@ generate: openapi.json
 	docker run --rm -v "$(shell pwd):/local" -w /local openapitools/openapi-generator-cli generate \
 	    -i openapi.json \
 	    -g php \
-	    -p apiPackage=BmltClient \
 	    -p artifactVersion=1.0.2 \
-	    -p srcBasePath=. \
-	    -p packageName=BmltClient \
 	    --git-repo-id=bmlt-root-server-php-client \
 	    --git-user-id=bmlt-enabled \
 	    -o .
