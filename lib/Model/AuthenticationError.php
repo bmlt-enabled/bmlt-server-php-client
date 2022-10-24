@@ -1,6 +1,6 @@
 <?php
 /**
- * ValidationError
+ * AuthenticationError
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * ValidationError Class Doc Comment
+ * AuthenticationError Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
+class AuthenticationError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValidationError';
+    protected static $openAPIModelName = 'AuthenticationError';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'errors' => 'array<string,string[]>'
+        'message' => 'string'
     ];
 
     /**
@@ -69,8 +68,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'errors' => null
+        'message' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-		'errors' => false
+        'message' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'errors' => 'errors'
+        'message' => 'message'
     ];
 
     /**
@@ -179,8 +175,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'errors' => 'setErrors'
+        'message' => 'setMessage'
     ];
 
     /**
@@ -189,8 +184,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'errors' => 'getErrors'
+        'message' => 'getMessage'
     ];
 
     /**
@@ -251,7 +245,6 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -283,9 +276,6 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,35 +317,6 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return array<string,string[]>
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param array<string,string[]> $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-
-        $this->container['errors'] = $errors;
 
         return $this;
     }

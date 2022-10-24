@@ -186,7 +186,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -343,7 +343,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\ErrorUnauthenticated
+     * @return \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\AuthenticationError
      */
     public function authRefresh()
     {
@@ -359,7 +359,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\ErrorUnauthenticated, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\AuthenticationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function authRefreshWithHttpInfo()
     {
@@ -417,17 +417,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -462,7 +462,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -633,7 +633,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\ValidationError
      */
     public function authToken($token_credentials)
     {
@@ -650,7 +650,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Token|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function authTokenWithHttpInfo($token_credentials)
     {
@@ -708,17 +708,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorIncorrectCredentials', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -768,7 +768,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorIncorrectCredentials',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -959,7 +959,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoFormatExists|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError
      */
     public function createFormat($format_create)
     {
@@ -976,7 +976,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoFormatExists|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFormatWithHttpInfo($format_create)
     {
@@ -1034,47 +1034,47 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorIncorrectCredentials', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoFormatExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoFormatExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoFormatExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1124,7 +1124,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorIncorrectCredentials',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1132,7 +1132,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1140,7 +1140,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoFormatExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1335,7 +1335,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ErrorUnauthorized|\OpenAPI\Client\Model\NoMeetingExists|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthorizationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError
      */
     public function createMeeting($meeting_create)
     {
@@ -1352,7 +1352,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ErrorUnauthorized|\OpenAPI\Client\Model\NoMeetingExists|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthorizationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createMeetingWithHttpInfo($meeting_create)
     {
@@ -1410,47 +1410,47 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthorized' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthorizationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthorized' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthorizationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthorized', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthorizationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoMeetingExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoMeetingExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoMeetingExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1500,7 +1500,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1508,7 +1508,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1516,7 +1516,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoMeetingExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1711,7 +1711,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ErrorUnauthorized|\OpenAPI\Client\Model\NoServiceBodyExists|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthorizationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError
      */
     public function createServiceBody($service_body_create)
     {
@@ -1728,7 +1728,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ErrorUnauthorized|\OpenAPI\Client\Model\NoServiceBodyExists|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthorizationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createServiceBodyWithHttpInfo($service_body_create)
     {
@@ -1786,47 +1786,47 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthorized' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthorizationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthorized' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthorizationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthorized', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthorizationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoServiceBodyExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoServiceBodyExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoServiceBodyExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1876,7 +1876,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1884,7 +1884,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1892,7 +1892,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoServiceBodyExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2087,7 +2087,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoUserExists|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError
      */
     public function createUser($user_create)
     {
@@ -2104,7 +2104,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\ErrorIncorrectCredentials|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoUserExists|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUserWithHttpInfo($user_create)
     {
@@ -2162,47 +2162,47 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorIncorrectCredentials' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorIncorrectCredentials', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoUserExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoUserExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoUserExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2252,7 +2252,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorIncorrectCredentials',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2260,7 +2260,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2268,7 +2268,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoUserExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2527,7 +2527,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2535,7 +2535,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2543,7 +2543,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoFormatExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2791,7 +2791,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2799,7 +2799,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2807,7 +2807,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoMeetingExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3047,7 +3047,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3055,7 +3055,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3063,7 +3063,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoServiceBodyExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3303,7 +3303,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3311,7 +3311,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3319,7 +3319,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoUserExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3503,7 +3503,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoFormatExists
+     * @return \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError
      */
     public function getFormat($format_id)
     {
@@ -3520,7 +3520,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoFormatExists, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Format|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFormatWithHttpInfo($format_id)
     {
@@ -3578,32 +3578,32 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoFormatExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoFormatExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoFormatExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3638,7 +3638,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3646,7 +3646,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoFormatExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3834,7 +3834,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Format[]|\OpenAPI\Client\Model\ErrorUnauthenticated
+     * @return \OpenAPI\Client\Model\Format[]|\OpenAPI\Client\Model\AuthenticationError
      */
     public function getFormats()
     {
@@ -3850,7 +3850,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Format[]|\OpenAPI\Client\Model\ErrorUnauthenticated, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Format[]|\OpenAPI\Client\Model\AuthenticationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFormatsWithHttpInfo()
     {
@@ -3908,17 +3908,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3953,7 +3953,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4124,7 +4124,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoMeetingExists
+     * @return \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError
      */
     public function getMeeting($meeting_id)
     {
@@ -4141,7 +4141,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoMeetingExists, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Meeting|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMeetingWithHttpInfo($meeting_id)
     {
@@ -4199,32 +4199,32 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoMeetingExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoMeetingExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoMeetingExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4259,7 +4259,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4267,7 +4267,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoMeetingExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4459,7 +4459,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\Meeting[]|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ValidationError
+     * @return \OpenAPI\Client\Model\Meeting[]|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\ValidationError
      */
     public function getMeetings($meeting_ids = null, $days = null, $service_body_ids = null, $search_string = null)
     {
@@ -4479,7 +4479,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\Meeting[]|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\Meeting[]|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\ValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMeetingsWithHttpInfo($meeting_ids = null, $days = null, $service_body_ids = null, $search_string = null)
     {
@@ -4537,17 +4537,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4597,7 +4597,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4827,7 +4827,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ServiceBody[]|\OpenAPI\Client\Model\ErrorUnauthenticated
+     * @return \OpenAPI\Client\Model\ServiceBody[]|\OpenAPI\Client\Model\AuthenticationError
      */
     public function getServiceBodies()
     {
@@ -4843,7 +4843,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ServiceBody[]|\OpenAPI\Client\Model\ErrorUnauthenticated, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ServiceBody[]|\OpenAPI\Client\Model\AuthenticationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceBodiesWithHttpInfo()
     {
@@ -4901,17 +4901,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4946,7 +4946,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5117,7 +5117,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoServiceBodyExists
+     * @return \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError
      */
     public function getServiceBody($service_body_id)
     {
@@ -5134,7 +5134,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoServiceBodyExists, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ServiceBody|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getServiceBodyWithHttpInfo($service_body_id)
     {
@@ -5192,32 +5192,32 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoServiceBodyExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoServiceBodyExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoServiceBodyExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5252,7 +5252,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5260,7 +5260,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoServiceBodyExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5449,7 +5449,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoUserExists
+     * @return \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError
      */
     public function getUser($user_id)
     {
@@ -5466,7 +5466,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\ErrorUnauthenticated|\OpenAPI\Client\Model\NoUserExists, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\User|\OpenAPI\Client\Model\AuthenticationError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo($user_id)
     {
@@ -5524,32 +5524,32 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NoUserExists' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NoUserExists' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NoUserExists', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5584,7 +5584,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5592,7 +5592,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoUserExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5780,7 +5780,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\User[]|\OpenAPI\Client\Model\ErrorUnauthenticated
+     * @return \OpenAPI\Client\Model\User[]|\OpenAPI\Client\Model\AuthenticationError
      */
     public function getUsers()
     {
@@ -5796,7 +5796,7 @@ class RootServerApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\User[]|\OpenAPI\Client\Model\ErrorUnauthenticated, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\User[]|\OpenAPI\Client\Model\AuthenticationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo()
     {
@@ -5854,17 +5854,17 @@ class RootServerApi
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\ErrorUnauthenticated' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\AuthenticationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ErrorUnauthenticated' !== 'string') {
+                        if ('\OpenAPI\Client\Model\AuthenticationError' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorUnauthenticated', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AuthenticationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5899,7 +5899,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6136,7 +6136,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6144,7 +6144,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6152,7 +6152,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoUserExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6418,7 +6418,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6426,7 +6426,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6434,7 +6434,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoFormatExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6700,7 +6700,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6708,7 +6708,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6716,7 +6716,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoMeetingExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6982,7 +6982,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6990,7 +6990,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6998,7 +6998,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoServiceBodyExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7264,7 +7264,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorIncorrectCredentials',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7272,7 +7272,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7280,7 +7280,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoFormatExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7546,7 +7546,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7554,7 +7554,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7562,7 +7562,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoMeetingExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7828,7 +7828,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7836,7 +7836,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthorized',
+                        '\OpenAPI\Client\Model\AuthorizationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7844,7 +7844,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoServiceBodyExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8110,7 +8110,7 @@ class RootServerApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorIncorrectCredentials',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8118,7 +8118,7 @@ class RootServerApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorUnauthenticated',
+                        '\OpenAPI\Client\Model\AuthenticationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8126,7 +8126,7 @@ class RootServerApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NoUserExists',
+                        '\OpenAPI\Client\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
