@@ -104,9 +104,8 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [ErrorIncorrectCredentials](docs/Model/ErrorIncorrectCredentials.md)
-- [ErrorUnauthenticated](docs/Model/ErrorUnauthenticated.md)
-- [ErrorUnauthorized](docs/Model/ErrorUnauthorized.md)
+- [AuthenticationError](docs/Model/AuthenticationError.md)
+- [AuthorizationError](docs/Model/AuthorizationError.md)
 - [Format](docs/Model/Format.md)
 - [FormatAllOf](docs/Model/FormatAllOf.md)
 - [FormatBase](docs/Model/FormatBase.md)
@@ -119,10 +118,7 @@ Class | Method | HTTP request | Description
 - [MeetingCreate](docs/Model/MeetingCreate.md)
 - [MeetingPartialUpdate](docs/Model/MeetingPartialUpdate.md)
 - [MeetingUpdate](docs/Model/MeetingUpdate.md)
-- [NoFormatExists](docs/Model/NoFormatExists.md)
-- [NoMeetingExists](docs/Model/NoMeetingExists.md)
-- [NoServiceBodyExists](docs/Model/NoServiceBodyExists.md)
-- [NoUserExists](docs/Model/NoUserExists.md)
+- [NotFoundError](docs/Model/NotFoundError.md)
 - [ServiceBody](docs/Model/ServiceBody.md)
 - [ServiceBodyBase](docs/Model/ServiceBodyBase.md)
 - [ServiceBodyCreate](docs/Model/ServiceBodyCreate.md)
