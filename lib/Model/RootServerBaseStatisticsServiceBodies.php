@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatUpdate
+ * RootServerBaseStatisticsServiceBodies
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FormatUpdate Class Doc Comment
+ * RootServerBaseStatisticsServiceBodies Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
+class RootServerBaseStatisticsServiceBodies implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FormatUpdate';
+    protected static $openAPIModelName = 'RootServerBase_statistics_serviceBodies';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'world_id' => 'string',
-        'type' => 'string',
-        'translations' => '\OpenAPI\Client\Model\FormatTranslation[]'
+        'num_zones' => 'int',
+        'num_regions' => 'int',
+        'num_areas' => 'int',
+        'num_groups' => 'int'
     ];
 
     /**
@@ -70,9 +71,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'world_id' => null,
-        'type' => null,
-        'translations' => null
+        'num_zones' => null,
+        'num_regions' => null,
+        'num_areas' => null,
+        'num_groups' => null
     ];
 
     /**
@@ -81,9 +83,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'world_id' => false,
-		'type' => false,
-		'translations' => false
+        'num_zones' => false,
+		'num_regions' => false,
+		'num_areas' => false,
+		'num_groups' => false
     ];
 
     /**
@@ -172,9 +175,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'world_id' => 'worldId',
-        'type' => 'type',
-        'translations' => 'translations'
+        'num_zones' => 'numZones',
+        'num_regions' => 'numRegions',
+        'num_areas' => 'numAreas',
+        'num_groups' => 'numGroups'
     ];
 
     /**
@@ -183,9 +187,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'world_id' => 'setWorldId',
-        'type' => 'setType',
-        'translations' => 'setTranslations'
+        'num_zones' => 'setNumZones',
+        'num_regions' => 'setNumRegions',
+        'num_areas' => 'setNumAreas',
+        'num_groups' => 'setNumGroups'
     ];
 
     /**
@@ -194,9 +199,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'world_id' => 'getWorldId',
-        'type' => 'getType',
-        'translations' => 'getTranslations'
+        'num_zones' => 'getNumZones',
+        'num_regions' => 'getNumRegions',
+        'num_areas' => 'getNumAreas',
+        'num_groups' => 'getNumGroups'
     ];
 
     /**
@@ -256,9 +262,10 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('world_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('num_zones', $data ?? [], null);
+        $this->setIfExists('num_regions', $data ?? [], null);
+        $this->setIfExists('num_areas', $data ?? [], null);
+        $this->setIfExists('num_groups', $data ?? [], null);
     }
 
     /**
@@ -288,8 +295,17 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
+        if ($this->container['num_zones'] === null) {
+            $invalidProperties[] = "'num_zones' can't be null";
+        }
+        if ($this->container['num_regions'] === null) {
+            $invalidProperties[] = "'num_regions' can't be null";
+        }
+        if ($this->container['num_areas'] === null) {
+            $invalidProperties[] = "'num_areas' can't be null";
+        }
+        if ($this->container['num_groups'] === null) {
+            $invalidProperties[] = "'num_groups' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +323,109 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets world_id
+     * Gets num_zones
      *
-     * @return string|null
+     * @return int
      */
-    public function getWorldId()
+    public function getNumZones()
     {
-        return $this->container['world_id'];
+        return $this->container['num_zones'];
     }
 
     /**
-     * Sets world_id
+     * Sets num_zones
      *
-     * @param string|null $world_id world_id
+     * @param int $num_zones num_zones
      *
      * @return self
      */
-    public function setWorldId($world_id)
+    public function setNumZones($num_zones)
     {
-        if (is_null($world_id)) {
-            throw new \InvalidArgumentException('non-nullable world_id cannot be null');
+        if (is_null($num_zones)) {
+            throw new \InvalidArgumentException('non-nullable num_zones cannot be null');
         }
-        $this->container['world_id'] = $world_id;
+        $this->container['num_zones'] = $num_zones;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets num_regions
      *
-     * @return string|null
+     * @return int
      */
-    public function getType()
+    public function getNumRegions()
     {
-        return $this->container['type'];
+        return $this->container['num_regions'];
     }
 
     /**
-     * Sets type
+     * Sets num_regions
      *
-     * @param string|null $type type
+     * @param int $num_regions num_regions
      *
      * @return self
      */
-    public function setType($type)
+    public function setNumRegions($num_regions)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($num_regions)) {
+            throw new \InvalidArgumentException('non-nullable num_regions cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['num_regions'] = $num_regions;
 
         return $this;
     }
 
     /**
-     * Gets translations
+     * Gets num_areas
      *
-     * @return \OpenAPI\Client\Model\FormatTranslation[]
+     * @return int
      */
-    public function getTranslations()
+    public function getNumAreas()
     {
-        return $this->container['translations'];
+        return $this->container['num_areas'];
     }
 
     /**
-     * Sets translations
+     * Sets num_areas
      *
-     * @param \OpenAPI\Client\Model\FormatTranslation[] $translations translations
+     * @param int $num_areas num_areas
      *
      * @return self
      */
-    public function setTranslations($translations)
+    public function setNumAreas($num_areas)
     {
-        if (is_null($translations)) {
-            throw new \InvalidArgumentException('non-nullable translations cannot be null');
+        if (is_null($num_areas)) {
+            throw new \InvalidArgumentException('non-nullable num_areas cannot be null');
         }
-        $this->container['translations'] = $translations;
+        $this->container['num_areas'] = $num_areas;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_groups
+     *
+     * @return int
+     */
+    public function getNumGroups()
+    {
+        return $this->container['num_groups'];
+    }
+
+    /**
+     * Sets num_groups
+     *
+     * @param int $num_groups num_groups
+     *
+     * @return self
+     */
+    public function setNumGroups($num_groups)
+    {
+        if (is_null($num_groups)) {
+            throw new \InvalidArgumentException('non-nullable num_groups cannot be null');
+        }
+        $this->container['num_groups'] = $num_groups;
 
         return $this;
     }

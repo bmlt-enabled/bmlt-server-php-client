@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatUpdate
+ * RootServer
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FormatUpdate Class Doc Comment
+ * RootServer Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
+class RootServer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FormatUpdate';
+    protected static $openAPIModelName = 'RootServer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'world_id' => 'string',
-        'type' => 'string',
-        'translations' => '\OpenAPI\Client\Model\FormatTranslation[]'
+        'source_id' => 'int',
+        'name' => 'string',
+        'url' => 'string',
+        'statistics' => '\OpenAPI\Client\Model\RootServerBaseStatistics',
+        'server_info' => 'string',
+        'last_successful_import' => '\DateTime',
+        'id' => 'int'
     ];
 
     /**
@@ -70,9 +74,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'world_id' => null,
-        'type' => null,
-        'translations' => null
+        'source_id' => null,
+        'name' => null,
+        'url' => null,
+        'statistics' => null,
+        'server_info' => null,
+        'last_successful_import' => 'date-time',
+        'id' => null
     ];
 
     /**
@@ -81,9 +89,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'world_id' => false,
-		'type' => false,
-		'translations' => false
+        'source_id' => false,
+		'name' => false,
+		'url' => false,
+		'statistics' => false,
+		'server_info' => false,
+		'last_successful_import' => false,
+		'id' => false
     ];
 
     /**
@@ -172,9 +184,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'world_id' => 'worldId',
-        'type' => 'type',
-        'translations' => 'translations'
+        'source_id' => 'sourceId',
+        'name' => 'name',
+        'url' => 'url',
+        'statistics' => 'statistics',
+        'server_info' => 'serverInfo',
+        'last_successful_import' => 'lastSuccessfulImport',
+        'id' => 'id'
     ];
 
     /**
@@ -183,9 +199,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'world_id' => 'setWorldId',
-        'type' => 'setType',
-        'translations' => 'setTranslations'
+        'source_id' => 'setSourceId',
+        'name' => 'setName',
+        'url' => 'setUrl',
+        'statistics' => 'setStatistics',
+        'server_info' => 'setServerInfo',
+        'last_successful_import' => 'setLastSuccessfulImport',
+        'id' => 'setId'
     ];
 
     /**
@@ -194,9 +214,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'world_id' => 'getWorldId',
-        'type' => 'getType',
-        'translations' => 'getTranslations'
+        'source_id' => 'getSourceId',
+        'name' => 'getName',
+        'url' => 'getUrl',
+        'statistics' => 'getStatistics',
+        'server_info' => 'getServerInfo',
+        'last_successful_import' => 'getLastSuccessfulImport',
+        'id' => 'getId'
     ];
 
     /**
@@ -256,9 +280,13 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('world_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('source_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('statistics', $data ?? [], null);
+        $this->setIfExists('server_info', $data ?? [], null);
+        $this->setIfExists('last_successful_import', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -288,8 +316,20 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
+        if ($this->container['source_id'] === null) {
+            $invalidProperties[] = "'source_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['last_successful_import'] === null) {
+            $invalidProperties[] = "'last_successful_import' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +347,190 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets world_id
+     * Gets source_id
      *
-     * @return string|null
+     * @return int
      */
-    public function getWorldId()
+    public function getSourceId()
     {
-        return $this->container['world_id'];
+        return $this->container['source_id'];
     }
 
     /**
-     * Sets world_id
+     * Sets source_id
      *
-     * @param string|null $world_id world_id
+     * @param int $source_id source_id
      *
      * @return self
      */
-    public function setWorldId($world_id)
+    public function setSourceId($source_id)
     {
-        if (is_null($world_id)) {
-            throw new \InvalidArgumentException('non-nullable world_id cannot be null');
+        if (is_null($source_id)) {
+            throw new \InvalidArgumentException('non-nullable source_id cannot be null');
         }
-        $this->container['world_id'] = $world_id;
+        $this->container['source_id'] = $source_id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getType()
+    public function getName()
     {
-        return $this->container['type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets type
+     * Sets name
      *
-     * @param string|null $type type
+     * @param string $name name
      *
      * @return self
      */
-    public function setType($type)
+    public function setName($name)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets translations
+     * Gets url
      *
-     * @return \OpenAPI\Client\Model\FormatTranslation[]
+     * @return string
      */
-    public function getTranslations()
+    public function getUrl()
     {
-        return $this->container['translations'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets translations
+     * Sets url
      *
-     * @param \OpenAPI\Client\Model\FormatTranslation[] $translations translations
+     * @param string $url url
      *
      * @return self
      */
-    public function setTranslations($translations)
+    public function setUrl($url)
     {
-        if (is_null($translations)) {
-            throw new \InvalidArgumentException('non-nullable translations cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['translations'] = $translations;
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets statistics
+     *
+     * @return \OpenAPI\Client\Model\RootServerBaseStatistics|null
+     */
+    public function getStatistics()
+    {
+        return $this->container['statistics'];
+    }
+
+    /**
+     * Sets statistics
+     *
+     * @param \OpenAPI\Client\Model\RootServerBaseStatistics|null $statistics statistics
+     *
+     * @return self
+     */
+    public function setStatistics($statistics)
+    {
+        if (is_null($statistics)) {
+            throw new \InvalidArgumentException('non-nullable statistics cannot be null');
+        }
+        $this->container['statistics'] = $statistics;
+
+        return $this;
+    }
+
+    /**
+     * Gets server_info
+     *
+     * @return string|null
+     */
+    public function getServerInfo()
+    {
+        return $this->container['server_info'];
+    }
+
+    /**
+     * Sets server_info
+     *
+     * @param string|null $server_info server_info
+     *
+     * @return self
+     */
+    public function setServerInfo($server_info)
+    {
+        if (is_null($server_info)) {
+            throw new \InvalidArgumentException('non-nullable server_info cannot be null');
+        }
+        $this->container['server_info'] = $server_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_successful_import
+     *
+     * @return \DateTime
+     */
+    public function getLastSuccessfulImport()
+    {
+        return $this->container['last_successful_import'];
+    }
+
+    /**
+     * Sets last_successful_import
+     *
+     * @param \DateTime $last_successful_import last_successful_import
+     *
+     * @return self
+     */
+    public function setLastSuccessfulImport($last_successful_import)
+    {
+        if (is_null($last_successful_import)) {
+            throw new \InvalidArgumentException('non-nullable last_successful_import cannot be null');
+        }
+        $this->container['last_successful_import'] = $last_successful_import;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

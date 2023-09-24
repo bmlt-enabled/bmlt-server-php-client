@@ -6,8 +6,9 @@ composer.json
 docs/Api/RootServerApi.md
 docs/Model/AuthenticationError.md
 docs/Model/AuthorizationError.md
+docs/Model/ConflictError.md
+docs/Model/ErrorTest.md
 docs/Model/Format.md
-docs/Model/FormatAllOf.md
 docs/Model/FormatBase.md
 docs/Model/FormatCreate.md
 docs/Model/FormatPartialUpdate.md
@@ -19,6 +20,12 @@ docs/Model/MeetingCreate.md
 docs/Model/MeetingPartialUpdate.md
 docs/Model/MeetingUpdate.md
 docs/Model/NotFoundError.md
+docs/Model/RootServer.md
+docs/Model/RootServerBase.md
+docs/Model/RootServerBaseStatistics.md
+docs/Model/RootServerBaseStatisticsMeetings.md
+docs/Model/RootServerBaseStatisticsServiceBodies.md
+docs/Model/ServerError.md
 docs/Model/ServiceBody.md
 docs/Model/ServiceBodyBase.md
 docs/Model/ServiceBodyCreate.md
@@ -29,7 +36,6 @@ docs/Model/TokenCredentials.md
 docs/Model/User.md
 docs/Model/UserBase.md
 docs/Model/UserCreate.md
-docs/Model/UserCreateAllOf.md
 docs/Model/UserPartialUpdate.md
 docs/Model/UserUpdate.md
 docs/Model/ValidationError.md
@@ -40,8 +46,9 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AuthenticationError.php
 lib/Model/AuthorizationError.php
+lib/Model/ConflictError.php
+lib/Model/ErrorTest.php
 lib/Model/Format.php
-lib/Model/FormatAllOf.php
 lib/Model/FormatBase.php
 lib/Model/FormatCreate.php
 lib/Model/FormatPartialUpdate.php
@@ -54,6 +61,12 @@ lib/Model/MeetingPartialUpdate.php
 lib/Model/MeetingUpdate.php
 lib/Model/ModelInterface.php
 lib/Model/NotFoundError.php
+lib/Model/RootServer.php
+lib/Model/RootServerBase.php
+lib/Model/RootServerBaseStatistics.php
+lib/Model/RootServerBaseStatisticsMeetings.php
+lib/Model/RootServerBaseStatisticsServiceBodies.php
+lib/Model/ServerError.php
 lib/Model/ServiceBody.php
 lib/Model/ServiceBodyBase.php
 lib/Model/ServiceBodyCreate.php
@@ -64,7 +77,6 @@ lib/Model/TokenCredentials.php
 lib/Model/User.php
 lib/Model/UserBase.php
 lib/Model/UserCreate.php
-lib/Model/UserCreateAllOf.php
 lib/Model/UserPartialUpdate.php
 lib/Model/UserUpdate.php
 lib/Model/ValidationError.php

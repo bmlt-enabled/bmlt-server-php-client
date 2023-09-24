@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatUpdate
+ * RootServerBaseStatistics
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FormatUpdate Class Doc Comment
+ * RootServerBaseStatistics Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
+class RootServerBaseStatistics implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FormatUpdate';
+    protected static $openAPIModelName = 'RootServerBase_statistics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'world_id' => 'string',
-        'type' => 'string',
-        'translations' => '\OpenAPI\Client\Model\FormatTranslation[]'
+        'service_bodies' => '\OpenAPI\Client\Model\RootServerBaseStatisticsServiceBodies',
+        'meetings' => '\OpenAPI\Client\Model\RootServerBaseStatisticsMeetings'
     ];
 
     /**
@@ -70,9 +69,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'world_id' => null,
-        'type' => null,
-        'translations' => null
+        'service_bodies' => null,
+        'meetings' => null
     ];
 
     /**
@@ -81,9 +79,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'world_id' => false,
-		'type' => false,
-		'translations' => false
+        'service_bodies' => false,
+		'meetings' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'world_id' => 'worldId',
-        'type' => 'type',
-        'translations' => 'translations'
+        'service_bodies' => 'serviceBodies',
+        'meetings' => 'meetings'
     ];
 
     /**
@@ -183,9 +179,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'world_id' => 'setWorldId',
-        'type' => 'setType',
-        'translations' => 'setTranslations'
+        'service_bodies' => 'setServiceBodies',
+        'meetings' => 'setMeetings'
     ];
 
     /**
@@ -194,9 +189,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'world_id' => 'getWorldId',
-        'type' => 'getType',
-        'translations' => 'getTranslations'
+        'service_bodies' => 'getServiceBodies',
+        'meetings' => 'getMeetings'
     ];
 
     /**
@@ -256,9 +250,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('world_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('service_bodies', $data ?? [], null);
+        $this->setIfExists('meetings', $data ?? [], null);
     }
 
     /**
@@ -288,8 +281,11 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
+        if ($this->container['service_bodies'] === null) {
+            $invalidProperties[] = "'service_bodies' can't be null";
+        }
+        if ($this->container['meetings'] === null) {
+            $invalidProperties[] = "'meetings' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +303,55 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets world_id
+     * Gets service_bodies
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\RootServerBaseStatisticsServiceBodies
      */
-    public function getWorldId()
+    public function getServiceBodies()
     {
-        return $this->container['world_id'];
+        return $this->container['service_bodies'];
     }
 
     /**
-     * Sets world_id
+     * Sets service_bodies
      *
-     * @param string|null $world_id world_id
+     * @param \OpenAPI\Client\Model\RootServerBaseStatisticsServiceBodies $service_bodies service_bodies
      *
      * @return self
      */
-    public function setWorldId($world_id)
+    public function setServiceBodies($service_bodies)
     {
-        if (is_null($world_id)) {
-            throw new \InvalidArgumentException('non-nullable world_id cannot be null');
+        if (is_null($service_bodies)) {
+            throw new \InvalidArgumentException('non-nullable service_bodies cannot be null');
         }
-        $this->container['world_id'] = $world_id;
+        $this->container['service_bodies'] = $service_bodies;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets meetings
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\RootServerBaseStatisticsMeetings
      */
-    public function getType()
+    public function getMeetings()
     {
-        return $this->container['type'];
+        return $this->container['meetings'];
     }
 
     /**
-     * Sets type
+     * Sets meetings
      *
-     * @param string|null $type type
+     * @param \OpenAPI\Client\Model\RootServerBaseStatisticsMeetings $meetings meetings
      *
      * @return self
      */
-    public function setType($type)
+    public function setMeetings($meetings)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($meetings)) {
+            throw new \InvalidArgumentException('non-nullable meetings cannot be null');
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets translations
-     *
-     * @return \OpenAPI\Client\Model\FormatTranslation[]
-     */
-    public function getTranslations()
-    {
-        return $this->container['translations'];
-    }
-
-    /**
-     * Sets translations
-     *
-     * @param \OpenAPI\Client\Model\FormatTranslation[] $translations translations
-     *
-     * @return self
-     */
-    public function setTranslations($translations)
-    {
-        if (is_null($translations)) {
-            throw new \InvalidArgumentException('non-nullable translations cannot be null');
-        }
-        $this->container['translations'] = $translations;
+        $this->container['meetings'] = $meetings;
 
         return $this;
     }

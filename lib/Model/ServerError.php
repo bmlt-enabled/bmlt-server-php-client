@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatUpdate
+ * ServerError
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FormatUpdate Class Doc Comment
+ * ServerError Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ServerError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FormatUpdate';
+    protected static $openAPIModelName = 'ServerError';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'world_id' => 'string',
-        'type' => 'string',
-        'translations' => '\OpenAPI\Client\Model\FormatTranslation[]'
+        'message' => 'string'
     ];
 
     /**
@@ -70,9 +68,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'world_id' => null,
-        'type' => null,
-        'translations' => null
+        'message' => null
     ];
 
     /**
@@ -81,9 +77,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'world_id' => false,
-		'type' => false,
-		'translations' => false
+        'message' => false
     ];
 
     /**
@@ -172,9 +166,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'world_id' => 'worldId',
-        'type' => 'type',
-        'translations' => 'translations'
+        'message' => 'message'
     ];
 
     /**
@@ -183,9 +175,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'world_id' => 'setWorldId',
-        'type' => 'setType',
-        'translations' => 'setTranslations'
+        'message' => 'setMessage'
     ];
 
     /**
@@ -194,9 +184,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'world_id' => 'getWorldId',
-        'type' => 'getType',
-        'translations' => 'getTranslations'
+        'message' => 'getMessage'
     ];
 
     /**
@@ -256,9 +244,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('world_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -288,8 +274,8 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -307,82 +293,28 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets world_id
+     * Gets message
      *
-     * @return string|null
+     * @return string
      */
-    public function getWorldId()
+    public function getMessage()
     {
-        return $this->container['world_id'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets world_id
+     * Sets message
      *
-     * @param string|null $world_id world_id
+     * @param string $message message
      *
      * @return self
      */
-    public function setWorldId($world_id)
+    public function setMessage($message)
     {
-        if (is_null($world_id)) {
-            throw new \InvalidArgumentException('non-nullable world_id cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['world_id'] = $world_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets translations
-     *
-     * @return \OpenAPI\Client\Model\FormatTranslation[]
-     */
-    public function getTranslations()
-    {
-        return $this->container['translations'];
-    }
-
-    /**
-     * Sets translations
-     *
-     * @param \OpenAPI\Client\Model\FormatTranslation[] $translations translations
-     *
-     * @return self
-     */
-    public function setTranslations($translations)
-    {
-        if (is_null($translations)) {
-            throw new \InvalidArgumentException('non-nullable translations cannot be null');
-        }
-        $this->container['translations'] = $translations;
+        $this->container['message'] = $message;
 
         return $this;
     }

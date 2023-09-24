@@ -1,6 +1,6 @@
 {
     "name": "bmlt-enabled/bmlt-root-server-php-client",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "BMLT Admin API Documentation",
     "keywords": [
         "openapitools",
@@ -15,7 +15,7 @@
     "license": "unlicense",
     "authors": [
         {
-            "name": "OpenAPI-Generator contributors",
+            "name": "OpenAPI",
             "homepage": "https://openapi-generator.tech"
         }
     ],

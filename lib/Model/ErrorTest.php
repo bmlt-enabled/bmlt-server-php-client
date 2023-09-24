@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatUpdate
+ * ErrorTest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * FormatUpdate Class Doc Comment
+ * ErrorTest Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorTest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FormatUpdate';
+    protected static $openAPIModelName = 'ErrorTest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'world_id' => 'string',
-        'type' => 'string',
-        'translations' => '\OpenAPI\Client\Model\FormatTranslation[]'
+        'arbitrary_string' => 'string',
+        'arbitrary_int' => 'int',
+        'force_server_error' => 'bool'
     ];
 
     /**
@@ -70,9 +70,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'world_id' => null,
-        'type' => null,
-        'translations' => null
+        'arbitrary_string' => null,
+        'arbitrary_int' => null,
+        'force_server_error' => null
     ];
 
     /**
@@ -81,9 +81,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'world_id' => false,
-		'type' => false,
-		'translations' => false
+        'arbitrary_string' => false,
+		'arbitrary_int' => false,
+		'force_server_error' => false
     ];
 
     /**
@@ -172,9 +172,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'world_id' => 'worldId',
-        'type' => 'type',
-        'translations' => 'translations'
+        'arbitrary_string' => 'arbitrary_string',
+        'arbitrary_int' => 'arbitrary_int',
+        'force_server_error' => 'force_server_error'
     ];
 
     /**
@@ -183,9 +183,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'world_id' => 'setWorldId',
-        'type' => 'setType',
-        'translations' => 'setTranslations'
+        'arbitrary_string' => 'setArbitraryString',
+        'arbitrary_int' => 'setArbitraryInt',
+        'force_server_error' => 'setForceServerError'
     ];
 
     /**
@@ -194,9 +194,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'world_id' => 'getWorldId',
-        'type' => 'getType',
-        'translations' => 'getTranslations'
+        'arbitrary_string' => 'getArbitraryString',
+        'arbitrary_int' => 'getArbitraryInt',
+        'force_server_error' => 'getForceServerError'
     ];
 
     /**
@@ -256,9 +256,9 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('world_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('arbitrary_string', $data ?? [], null);
+        $this->setIfExists('arbitrary_int', $data ?? [], null);
+        $this->setIfExists('force_server_error', $data ?? [], null);
     }
 
     /**
@@ -288,9 +288,6 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['translations'] === null) {
-            $invalidProperties[] = "'translations' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -307,82 +304,82 @@ class FormatUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets world_id
+     * Gets arbitrary_string
      *
      * @return string|null
      */
-    public function getWorldId()
+    public function getArbitraryString()
     {
-        return $this->container['world_id'];
+        return $this->container['arbitrary_string'];
     }
 
     /**
-     * Sets world_id
+     * Sets arbitrary_string
      *
-     * @param string|null $world_id world_id
+     * @param string|null $arbitrary_string arbitrary_string
      *
      * @return self
      */
-    public function setWorldId($world_id)
+    public function setArbitraryString($arbitrary_string)
     {
-        if (is_null($world_id)) {
-            throw new \InvalidArgumentException('non-nullable world_id cannot be null');
+        if (is_null($arbitrary_string)) {
+            throw new \InvalidArgumentException('non-nullable arbitrary_string cannot be null');
         }
-        $this->container['world_id'] = $world_id;
+        $this->container['arbitrary_string'] = $arbitrary_string;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets arbitrary_int
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getArbitraryInt()
     {
-        return $this->container['type'];
+        return $this->container['arbitrary_int'];
     }
 
     /**
-     * Sets type
+     * Sets arbitrary_int
      *
-     * @param string|null $type type
+     * @param int|null $arbitrary_int arbitrary_int
      *
      * @return self
      */
-    public function setType($type)
+    public function setArbitraryInt($arbitrary_int)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($arbitrary_int)) {
+            throw new \InvalidArgumentException('non-nullable arbitrary_int cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['arbitrary_int'] = $arbitrary_int;
 
         return $this;
     }
 
     /**
-     * Gets translations
+     * Gets force_server_error
      *
-     * @return \OpenAPI\Client\Model\FormatTranslation[]
+     * @return bool|null
      */
-    public function getTranslations()
+    public function getForceServerError()
     {
-        return $this->container['translations'];
+        return $this->container['force_server_error'];
     }
 
     /**
-     * Sets translations
+     * Sets force_server_error
      *
-     * @param \OpenAPI\Client\Model\FormatTranslation[] $translations translations
+     * @param bool|null $force_server_error force_server_error
      *
      * @return self
      */
-    public function setTranslations($translations)
+    public function setForceServerError($force_server_error)
     {
-        if (is_null($translations)) {
-            throw new \InvalidArgumentException('non-nullable translations cannot be null');
+        if (is_null($force_server_error)) {
+            throw new \InvalidArgumentException('non-nullable force_server_error cannot be null');
         }
-        $this->container['translations'] = $translations;
+        $this->container['force_server_error'] = $force_server_error;
 
         return $this;
     }

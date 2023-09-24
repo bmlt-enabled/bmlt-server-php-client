@@ -7,6 +7,7 @@ All URIs are relative to http://localhost:8000/main_server, except if the operat
 | [**authLogout()**](RootServerApi.md#authLogout) | **POST** /api/v1/auth/logout | Revokes a token |
 | [**authRefresh()**](RootServerApi.md#authRefresh) | **POST** /api/v1/auth/refresh | Revokes and issues a new token |
 | [**authToken()**](RootServerApi.md#authToken) | **POST** /api/v1/auth/token | Creates a token |
+| [**createErrorTest()**](RootServerApi.md#createErrorTest) | **POST** /api/v1/errortest | Tests some errors |
 | [**createFormat()**](RootServerApi.md#createFormat) | **POST** /api/v1/formats | Creates a format |
 | [**createMeeting()**](RootServerApi.md#createMeeting) | **POST** /api/v1/meetings | Creates a meeting |
 | [**createServiceBody()**](RootServerApi.md#createServiceBody) | **POST** /api/v1/servicebodies | Creates a service body |
@@ -19,6 +20,8 @@ All URIs are relative to http://localhost:8000/main_server, except if the operat
 | [**getFormats()**](RootServerApi.md#getFormats) | **GET** /api/v1/formats | Retrieves formats |
 | [**getMeeting()**](RootServerApi.md#getMeeting) | **GET** /api/v1/meetings/{meetingId} | Retrieves a meeting |
 | [**getMeetings()**](RootServerApi.md#getMeetings) | **GET** /api/v1/meetings | Retrieves meetings |
+| [**getRootServer()**](RootServerApi.md#getRootServer) | **GET** /api/v1/rootservers/{rootServerId} | Retrieves a root server |
+| [**getRootServers()**](RootServerApi.md#getRootServers) | **GET** /api/v1/rootservers | Retrieves root servers |
 | [**getServiceBodies()**](RootServerApi.md#getServiceBodies) | **GET** /api/v1/servicebodies | Retrieves service bodies |
 | [**getServiceBody()**](RootServerApi.md#getServiceBody) | **GET** /api/v1/servicebodies/{serviceBodyId} | Retrieves a service body |
 | [**getUser()**](RootServerApi.md#getUser) | **GET** /api/v1/users/{userId} | Retrieves a single user |
@@ -192,6 +195,66 @@ try {
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createErrorTest()`
+
+```php
+createErrorTest($error_test): \OpenAPI\Client\Model\ErrorTest
+```
+
+Tests some errors
+
+Tests some errors.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$error_test = new \OpenAPI\Client\Model\ErrorTest(); // \OpenAPI\Client\Model\ErrorTest | Pass in error test object.
+
+try {
+    $result = $apiInstance->createErrorTest($error_test);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->createErrorTest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **error_test** | [**\OpenAPI\Client\Model\ErrorTest**](../Model/ErrorTest.md)| Pass in error test object. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ErrorTest**](../Model/ErrorTest.md)
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
 
 ### HTTP request headers
 
@@ -907,6 +970,119 @@ try {
 ### Return type
 
 [**\OpenAPI\Client\Model\Meeting[]**](../Model/Meeting.md)
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRootServer()`
+
+```php
+getRootServer($root_server_id): \OpenAPI\Client\Model\RootServer
+```
+
+Retrieves a root server
+
+Retrieve a single root server id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$root_server_id = 1; // int | ID of root server
+
+try {
+    $result = $apiInstance->getRootServer($root_server_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->getRootServer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **root_server_id** | **int**| ID of root server | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\RootServer**](../Model/RootServer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRootServers()`
+
+```php
+getRootServers(): \OpenAPI\Client\Model\RootServer[]
+```
+
+Retrieves root servers
+
+Retrieve root servers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getRootServers();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->getRootServers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\RootServer[]**](../Model/RootServer.md)
 
 ### Authorization
 
