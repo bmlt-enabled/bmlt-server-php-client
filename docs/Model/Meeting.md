@@ -38,8 +38,9 @@ Name | Type | Description | Notes
 **contact_email_1** | **string** |  | [optional]
 **contact_email_2** | **string** |  | [optional]
 **bus_lines** | **string** |  | [optional]
-**train_line** | **string** |  | [optional]
+**train_lines** | **string** |  | [optional]
 **comments** | **string** |  | [optional]
+**custom_fields** | **array<string,string>** |  | [optional]
 **id** | **int** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

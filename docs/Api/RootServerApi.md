@@ -18,7 +18,9 @@ All URIs are relative to http://localhost:8000/main_server, except if the operat
 | [**deleteUser()**](RootServerApi.md#deleteUser) | **DELETE** /api/v1/users/{userId} | Deletes a user |
 | [**getFormat()**](RootServerApi.md#getFormat) | **GET** /api/v1/formats/{formatId} | Retrieves a format |
 | [**getFormats()**](RootServerApi.md#getFormats) | **GET** /api/v1/formats | Retrieves formats |
+| [**getLaravelLog()**](RootServerApi.md#getLaravelLog) | **GET** /api/v1/logs/laravel | Retrieves laravel log |
 | [**getMeeting()**](RootServerApi.md#getMeeting) | **GET** /api/v1/meetings/{meetingId} | Retrieves a meeting |
+| [**getMeetingChanges()**](RootServerApi.md#getMeetingChanges) | **GET** /api/v1/meetings/{meetingId}/changes | Retrieve changes for a meeting |
 | [**getMeetings()**](RootServerApi.md#getMeetings) | **GET** /api/v1/meetings | Retrieves meetings |
 | [**getRootServer()**](RootServerApi.md#getRootServer) | **GET** /api/v1/rootservers/{rootServerId} | Retrieves a root server |
 | [**getRootServers()**](RootServerApi.md#getRootServers) | **GET** /api/v1/rootservers | Retrieves root servers |
@@ -858,6 +860,63 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getLaravelLog()`
+
+```php
+getLaravelLog(): \SplFileObject
+```
+
+Retrieves laravel log
+
+Retrieve the laravel log if it exists.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getLaravelLog();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->getLaravelLog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\SplFileObject**
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/gzip`, `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMeeting()`
 
 ```php
@@ -904,6 +963,66 @@ try {
 ### Return type
 
 [**\OpenAPI\Client\Model\Meeting**](../Model/Meeting.md)
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMeetingChanges()`
+
+```php
+getMeetingChanges($meeting_id): \OpenAPI\Client\Model\MeetingChangeResource[]
+```
+
+Retrieve changes for a meeting
+
+Retrieve all changes made to a specific meeting.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$meeting_id = 1; // int | ID of the meeting
+
+try {
+    $result = $apiInstance->getMeetingChanges($meeting_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->getMeetingChanges: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **meeting_id** | **int**| ID of the meeting | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\MeetingChangeResource[]**](../Model/MeetingChangeResource.md)
 
 ### Authorization
 
@@ -1057,15 +1176,11 @@ Retrieve root servers.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure OAuth2 access token for authorization: bmltToken
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 $apiInstance = new OpenAPI\Client\Api\RootServerApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 
 try {
@@ -1086,7 +1201,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bmltToken](../../README.md#bmltToken)
+No authorization required
 
 ### HTTP request headers
 
