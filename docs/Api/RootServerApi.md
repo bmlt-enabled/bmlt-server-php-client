@@ -1,5 +1,7 @@
 # OpenAPI\Client\RootServerApi
 
+rootServer
+
 All URIs are relative to http://localhost:8000/main_server, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -1571,7 +1573,7 @@ void (empty response body)
 ## `patchMeeting()`
 
 ```php
-patchMeeting($meeting_id, $meeting_partial_update)
+patchMeeting($meeting_id, $meeting_partial_update, $skip_venue_type_location_validation)
 ```
 
 Patches a meeting
@@ -1597,9 +1599,10 @@ $apiInstance = new OpenAPI\Client\Api\RootServerApi(
 );
 $meeting_id = 1; // int | ID of meeting
 $meeting_partial_update = new \OpenAPI\Client\Model\MeetingPartialUpdate(); // \OpenAPI\Client\Model\MeetingPartialUpdate | Pass in fields you want to update.
+$skip_venue_type_location_validation = true; // bool | specify true to skip venue type location validation
 
 try {
-    $apiInstance->patchMeeting($meeting_id, $meeting_partial_update);
+    $apiInstance->patchMeeting($meeting_id, $meeting_partial_update, $skip_venue_type_location_validation);
 } catch (Exception $e) {
     echo 'Exception when calling RootServerApi->patchMeeting: ', $e->getMessage(), PHP_EOL;
 }
@@ -1611,6 +1614,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **meeting_id** | **int**| ID of meeting | |
 | **meeting_partial_update** | [**\OpenAPI\Client\Model\MeetingPartialUpdate**](../Model/MeetingPartialUpdate.md)| Pass in fields you want to update. | |
+| **skip_venue_type_location_validation** | **bool**| specify true to skip venue type location validation | [optional] |
 
 ### Return type
 
