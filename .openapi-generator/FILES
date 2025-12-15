@@ -32,6 +32,9 @@ docs/Model/ServiceBodyBase.md
 docs/Model/ServiceBodyCreate.md
 docs/Model/ServiceBodyPartialUpdate.md
 docs/Model/ServiceBodyUpdate.md
+docs/Model/SettingsBase.md
+docs/Model/SettingsObject.md
+docs/Model/SettingsUpdate.md
 docs/Model/Token.md
 docs/Model/TokenCredentials.md
 docs/Model/User.md
@@ -75,6 +78,9 @@ lib/Model/ServiceBodyBase.php
 lib/Model/ServiceBodyCreate.php
 lib/Model/ServiceBodyPartialUpdate.php
 lib/Model/ServiceBodyUpdate.php
+lib/Model/SettingsBase.php
+lib/Model/SettingsObject.php
+lib/Model/SettingsUpdate.php
 lib/Model/Token.php
 lib/Model/TokenCredentials.php
 lib/Model/User.php
@@ -85,3 +91,6 @@ lib/Model/UserUpdate.php
 lib/Model/ValidationError.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SettingsBaseTest.php
+test/Model/SettingsObjectTest.php
+test/Model/SettingsUpdateTest.php

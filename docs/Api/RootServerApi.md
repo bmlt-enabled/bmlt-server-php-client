@@ -28,6 +28,7 @@ All URIs are relative to http://localhost:8000/main_server, except if the operat
 | [**getRootServers()**](RootServerApi.md#getRootServers) | **GET** /api/v1/rootservers | Retrieves root servers |
 | [**getServiceBodies()**](RootServerApi.md#getServiceBodies) | **GET** /api/v1/servicebodies | Retrieves service bodies |
 | [**getServiceBody()**](RootServerApi.md#getServiceBody) | **GET** /api/v1/servicebodies/{serviceBodyId} | Retrieves a service body |
+| [**getSettings()**](RootServerApi.md#getSettings) | **GET** /api/v1/settings | Retrieves all settings |
 | [**getUser()**](RootServerApi.md#getUser) | **GET** /api/v1/users/{userId} | Retrieves a single user |
 | [**getUsers()**](RootServerApi.md#getUsers) | **GET** /api/v1/users | Retrieves users |
 | [**partialUpdateUser()**](RootServerApi.md#partialUpdateUser) | **PATCH** /api/v1/users/{userId} | Patches a user |
@@ -37,6 +38,7 @@ All URIs are relative to http://localhost:8000/main_server, except if the operat
 | [**updateFormat()**](RootServerApi.md#updateFormat) | **PUT** /api/v1/formats/{formatId} | Updates a format |
 | [**updateMeeting()**](RootServerApi.md#updateMeeting) | **PUT** /api/v1/meetings/{meetingId} | Updates a meeting |
 | [**updateServiceBody()**](RootServerApi.md#updateServiceBody) | **PUT** /api/v1/servicebodies/{serviceBodyId} | Updates a Service Body |
+| [**updateSettings()**](RootServerApi.md#updateSettings) | **PATCH** /api/v1/settings | Update settings |
 | [**updateUser()**](RootServerApi.md#updateUser) | **PUT** /api/v1/users/{userId} | Update single user |
 
 
@@ -1331,6 +1333,63 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getSettings()`
+
+```php
+getSettings(): \OpenAPI\Client\Model\SettingsObject
+```
+
+Retrieves all settings
+
+Retrieve all server settings. Only accessible to server administrators.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getSettings();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->getSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\SettingsObject**](../Model/SettingsObject.md)
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getUser()`
 
 ```php
@@ -1859,6 +1918,65 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **service_body_id** | **int**| ID of service body | |
 | **service_body_update** | [**\OpenAPI\Client\Model\ServiceBodyUpdate**](../Model/ServiceBodyUpdate.md)| Pass in service body object | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bmltToken](../../README.md#bmltToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateSettings()`
+
+```php
+updateSettings($settings_update)
+```
+
+Update settings
+
+Updates one or more server settings. Only accessible to server administrators.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: bmltToken
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RootServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settings_update = new \OpenAPI\Client\Model\SettingsUpdate(); // \OpenAPI\Client\Model\SettingsUpdate | Pass in settings object with values to update
+
+try {
+    $apiInstance->updateSettings($settings_update);
+} catch (Exception $e) {
+    echo 'Exception when calling RootServerApi->updateSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **settings_update** | [**\OpenAPI\Client\Model\SettingsUpdate**](../Model/SettingsUpdate.md)| Pass in settings object with values to update | |
 
 ### Return type
 

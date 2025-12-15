@@ -337,7 +337,7 @@ class ServiceBodyCreate implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['parent_id'] === null) {
+        if ($this->container['parent_id'] === null && !$this->isNullableSetToNull('parent_id')) {
             $invalidProperties[] = "'parent_id' can't be null";
         }
         if ($this->container['name'] === null) {
@@ -373,7 +373,7 @@ class ServiceBodyCreate implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets parent_id
      *
-     * @return int
+     * @return int|null
      */
     public function getParentId()
     {
@@ -383,7 +383,7 @@ class ServiceBodyCreate implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets parent_id
      *
-     * @param int $parent_id parent_id
+     * @param int|null $parent_id parent_id
      *
      * @return self
      */
