@@ -7,7 +7,7 @@ generate: openapi.json
 	docker run --rm -v "$(shell pwd):/local" -w /local openapitools/openapi-generator-cli generate \
 	    -i openapi.json \
 	    -g php \
-	    -p artifactVersion=1.1.0 \
+	    -p artifactVersion=1.1.1 \
 	    --git-repo-id=bmlt-server-php-client \
 	    --git-user-id=bmlt-enabled \
 	    -o .

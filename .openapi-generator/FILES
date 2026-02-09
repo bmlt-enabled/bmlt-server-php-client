@@ -91,6 +91,3 @@ lib/Model/UserUpdate.php
 lib/Model/ValidationError.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SettingsBaseTest.php
-test/Model/SettingsObjectTest.php
-test/Model/SettingsUpdateTest.php

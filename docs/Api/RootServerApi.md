@@ -632,12 +632,12 @@ void (empty response body)
 ## `deleteServiceBody()`
 
 ```php
-deleteServiceBody($service_body_id)
+deleteServiceBody($service_body_id, $force)
 ```
 
 Deletes a service body
 
-Deletes a service body by id.
+Deletes a service body by id. If the service body has meetings, use force=true to delete them as well.
 
 ### Example
 
@@ -657,9 +657,10 @@ $apiInstance = new OpenAPI\Client\Api\RootServerApi(
     $config
 );
 $service_body_id = 1; // int | ID of service body
+$force = false; // string | Force deletion of service body and all associated meetings
 
 try {
-    $apiInstance->deleteServiceBody($service_body_id);
+    $apiInstance->deleteServiceBody($service_body_id, $force);
 } catch (Exception $e) {
     echo 'Exception when calling RootServerApi->deleteServiceBody: ', $e->getMessage(), PHP_EOL;
 }
@@ -670,6 +671,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **service_body_id** | **int**| ID of service body | |
+| **force** | **string**| Force deletion of service body and all associated meetings | [optional] [default to &#39;false&#39;] |
 
 ### Return type
 
